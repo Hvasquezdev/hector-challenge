@@ -42,17 +42,29 @@
     <base-list>
       <li>
         <span class="text-bold">How many guests?</span>
-        <counter-button v-if="is_review" :value="adults" @input="(val) => (adults = val)" />
+        <counter-button
+          v-if="is_review"
+          :value="adults"
+          @input="(val) => (adults = val)"
+        />
         <template v-else>{{ adults }}</template>
       </li>
       <li>
         <span class="text-bold">How many childrens?</span>
-        <counter-button v-if="is_review" :value="children" @input="(val) => (children = val)" />
-          <template v-else>{{ children }}</template>
+        <counter-button
+          v-if="is_review"
+          :value="children"
+          @input="(val) => (children = val)"
+        />
+        <template v-else>{{ children }}</template>
       </li>
       <li>
         <span class="text-bold">Do you have pets?</span>
-        <base-switch v-if="is_review" :value="pets" @toggle="(val) => (pets = val)" />
+        <base-switch
+          v-if="is_review"
+          :value="pets"
+          @toggle="(val) => (pets = val)"
+        />
         <template v-else>{{ pets ? 'Yes' : 'No' }}</template>
       </li>
     </base-list>

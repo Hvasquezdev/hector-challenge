@@ -16,7 +16,8 @@
         <span class="text-bold">Base price:</span> ${{ reservation.base_price }}
       </li>
       <li v-if="reservation_details.message">
-        <span class="text-bold">Message:</span> {{ reservation_details.message }}
+        <span class="text-bold">Message:</span>
+        {{ reservation_details.message }}
       </li>
     </base-list>
 
