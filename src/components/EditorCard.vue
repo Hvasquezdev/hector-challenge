@@ -40,33 +40,30 @@
     </breadcrumb>
 
     <base-list>
-      <li>
-        <span class="text-bold">How many guests?</span>
+      <base-list-item title="How many guests?" bold>
         <counter-button
           v-if="is_review"
           :value="adults"
           @input="(val) => (adults = val)"
         />
         <template v-else>{{ adults }}</template>
-      </li>
-      <li>
-        <span class="text-bold">How many childrens?</span>
+      </base-list-item>
+      <base-list-item title="How many childrens?" bold>
         <counter-button
           v-if="is_review"
           :value="children"
           @input="(val) => (children = val)"
         />
         <template v-else>{{ children }}</template>
-      </li>
-      <li>
-        <span class="text-bold">Do you have pets?</span>
+      </base-list-item>
+      <base-list-item title="Do you have pets?" bold>
         <base-switch
           v-if="is_review"
           :value="pets"
           @toggle="(val) => (pets = val)"
         />
         <template v-else>{{ pets ? 'Yes' : 'No' }}</template>
-      </li>
+      </base-list-item>
     </base-list>
 
     <div class="payment-details">
@@ -75,26 +72,19 @@
       </h2>
 
       <base-list>
-        <li>
-          <span>Stay duration:</span>
+        <base-list-item title="Stay duration:">
           {{ daysDiff }} Nights
-        </li>
-        <li>
-          <span>Nights cost:</span>
+        </base-list-item>
+        <base-list-item title="Nights cost:">
           ${{ reservation.base_price }}
-        </li>
-        <li>
-          <span>Discount:</span>
+        </base-list-item>
+        <base-list-item title="Discount:">
           ${{ reservation.weekly_discount }}
-        </li>
-        <li>
-          <span>Cleaning fees:</span>
+        </base-list-item>
+        <base-list-item title="Cleaning fees:">
           ${{ reservation.cleaning_fee }}
-        </li>
-        <li>
-          <span>Your total:</span>
-          ${{ total }}
-        </li>
+        </base-list-item>
+        <base-list-item title="Your total:" bold> ${{ total }} </base-list-item>
       </base-list>
     </div>
   </base-card>
@@ -111,6 +101,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import BaseSwitch from '@/components/BaseSwitch';
 import RateStars from '@/components/RateStars';
 import BaseList from '@/components/BaseList';
+import BaseListItem from '@/components/BaseListItem';
 
 export default {
   name: 'DetailsCard',
@@ -122,15 +113,16 @@ export default {
     BaseSwitch,
     RateStars,
     BaseList,
+    BaseListItem,
   },
 
   setup() {
     const { state, commit } = useStore();
-    const { name } = useRoute();
+    const route = useRoute();
     const reservation = ref(state.reservation);
     const reservation_details = ref(state.reservation_details);
 
-    const is_review = computed(() => name === 'review');
+    const is_review = computed(() => route.name === 'review');
 
     // Update reservation details model
     const checkout = computed({

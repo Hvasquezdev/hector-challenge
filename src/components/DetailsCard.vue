@@ -5,20 +5,21 @@
     </h1>
 
     <base-list>
-      <li><span class="text-bold">Dates:</span> {{ dates }}</li>
-      <li>
-        <span class="text-bold">Guests:</span> {{ reservation_details.adults }}
-      </li>
-      <li>
-        <span class="text-bold">Trip duration:</span> {{ tripDuration }} Nights
-      </li>
-      <li>
-        <span class="text-bold">Base price:</span> ${{ reservation.base_price }}
-      </li>
-      <li v-if="reservation_details.message">
-        <span class="text-bold">Message:</span>
+      <base-list-item title="Dates:" bold>
+        {{ dates }}
+      </base-list-item>
+      <base-list-item title="Guests:" bold>
+        {{ reservation_details.adults }}
+      </base-list-item>
+      <base-list-item title="Trip duration:" bold>
+        {{ tripDuration }} Nights
+      </base-list-item>
+      <base-list-item title="Base price:" bold>
+        ${{ reservation.base_price }}
+      </base-list-item>
+      <base-list-item v-if="reservation_details.message" title="Message:" bold>
         {{ reservation_details.message }}
-      </li>
+      </base-list-item>
     </base-list>
 
     <div class="card-extension" v-if="$slots.extension">
@@ -37,6 +38,7 @@ import { useStore } from 'vuex';
 import { getDaysDiff } from '@/composables/useDates';
 import BaseCard from '@/components/BaseCard';
 import BaseList from '@/components/BaseList';
+import BaseListItem from '@/components/BaseListItem';
 
 export default {
   name: 'DetailsCard',
@@ -44,6 +46,7 @@ export default {
   components: {
     BaseCard,
     BaseList,
+    BaseListItem,
   },
 
   setup() {
