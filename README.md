@@ -2,12 +2,16 @@
 
 ## Project setup
 ```
-npm install
+1- Run in your console: npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+2- Run in your console: npm run serve
+```
+### After the compilation process is complete
+```
+3- Open your browser and go to: http://localhost:8080
 ```
 
 ### Compiles and minifies for production
